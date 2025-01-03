@@ -1,0 +1,11 @@
+The following CSS code snippet demonstrates an uncommon error involving the use of the `calc()` function and the `vh` unit within a media query:
+
+```css
+@media (max-width: 768px) {
+  .element {
+    height: calc(100vh - 100px);
+  }
+}
+```
+
+This code attempts to set the height of the `.element` to 100% of the viewport height minus 100 pixels. However, this calculation may produce unexpected results in certain scenarios, mainly due to how `calc()` interacts with `vh` within media queries that change the viewport size.  The issue is that the `100vh` calculation is performed *after* the media query has been applied, meaning that the `100vh` value might not reflect what was initially intended. 
