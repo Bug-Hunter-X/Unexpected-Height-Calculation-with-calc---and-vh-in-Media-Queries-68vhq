@@ -1,0 +1,14 @@
+A more robust solution would involve using JavaScript to handle the calculation and to account for changes in viewport size in a more consistent way. This ensures that the height is dynamically updated correctly even with the limitations of CSS `calc()`.
+
+```javascript
+function adjustHeight() {
+  const element = document.querySelector('.element');
+  const viewportHeight = window.innerHeight;
+  element.style.height = `${viewportHeight - 100}px`;
+}
+
+window.addEventListener('resize', adjustHeight);
+window.addEventListener('load', adjustHeight);
+```
+
+Alternatively, consider using viewport units (like `vh`) alone if the exact offset subtraction isn't crucial.  Sometimes a simpler CSS solution will suffice; avoid the `calc()` entirely if possible, but this is not always viable depending on the specific design constraints.
